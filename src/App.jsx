@@ -4,8 +4,12 @@ import Nav from './components/Nav';
 import SectionHero from './components/SectionHero';
 import SectionAboutMe from './components/SectionAboutMe';
 import SectionPrograms from './components/SectionPrograms';
+import SectionCharacteristics from './components/SectionCharacteristics';
+import SectionFinal from './components/SectionFinal';
+import Footer from './components/Footer';
 import Card from "./components/Card";
 import Button from "./components/Button";
+import { FaRocket } from 'react-icons/fa';
 
 export default function App() {
   return (
@@ -13,7 +17,7 @@ export default function App() {
       <Header>
         <Nav/>
       </Header>
-
+      
       <SectionHero>
         <Button textButton="Ver ahora!" />
       </SectionHero>
@@ -48,6 +52,14 @@ export default function App() {
           </Card>
         </div>
       </SectionPrograms>
+
+      <SectionCharacteristics/>
+
+      <SectionFinal>
+        <Button textButton="Saber m&aacute;s"/>
+      </SectionFinal>
+
+      <Footer/>
     </>
   )
 }
