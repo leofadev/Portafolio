@@ -1,4 +1,5 @@
-import './index.css'
+import React from 'react';
+import './index.css';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import SectionHero from './components/SectionHero';
@@ -9,7 +10,7 @@ import SectionFinal from './components/SectionFinal';
 import Footer from './components/Footer';
 import Card from "./components/Card";
 import Button from "./components/Button";
-import { FaRocket } from 'react-icons/fa';
+
 
 export default function App() {
   return (
