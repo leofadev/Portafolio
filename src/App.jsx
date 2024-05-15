@@ -1,8 +1,6 @@
-import React from 'react';
 import './index.css';
 import Header from './components/Header';
 import Nav from './components/Nav';
-import SectionHero from './components/SectionHero';
 import SectionAboutMe from './components/SectionAboutMe';
 import SectionPrograms from './components/SectionPrograms';
 import SectionCharacteristics from './components/SectionCharacteristics';
@@ -18,10 +16,6 @@ export default function App() {
       <Header>
         <Nav/>
       </Header>
-      
-      <SectionHero>
-        <Button textButton="Ver ahora!" />
-      </SectionHero>
 
       <SectionAboutMe/>
       

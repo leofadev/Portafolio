@@ -12,6 +12,7 @@ export default function Footer() {
             <div className="container" data-aos="fade-down"
         data-aos-easing="linear"
         data-aos-duration="1500">
+                <p>©Portafolio</p>
                 <p>©LeonardoWebsite</p>
             </div>
         </footer>
