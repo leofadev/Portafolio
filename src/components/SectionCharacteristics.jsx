@@ -9,25 +9,9 @@ export default function SectionCharacteristics() {
     }, []);
 
     return (
-        <section id="caracteristicas" data-aos="fade-down"
-            data-aos-easing="linear"
-            data-aos-duration="1500">
+        <section id="caracteristicas">
             <div className="container">
-            <ol>
-                <li data-aos="fade-right" data-aos-duration="800">
-                    ✔️ 100% Online
-                </li>
-                <li data-aos="fade-right" data-aos-duration="800">
-                    ✔️ Flexibilidad De Horarios
-                </li>
-                <li data-aos="fade-right" data-aos-duration="800">
-                    ✔️ Servicio Técnico
-                </li>
-                <li data-aos="fade-right" data-aos-duration="800">
-                    ✔️ Asistencia Financiera
-                </li>
-            </ol>
-
+            {/* aqui iran las tecnologias y caracteristicas dev. */}
             </div>
         </section>
     );

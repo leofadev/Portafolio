@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import Aos from "aos";
 import "aos/dist/aos.css";
 
@@ -8,13 +8,15 @@ export default function Footer() {
     }, [])
 
     return (
-        <footer>
-            <div className="container" data-aos="fade-down"
-        data-aos-easing="linear"
-        data-aos-duration="1500">
-                <p>©Portafolio</p>
-                <p>©LeonardoWebsite</p>
+    <footer className="container-fluid bg-dark text-light  fixed-bottom">
+        <div className="container">
+            <div className="row">
+                <div className="col-12 text-center">
+                    <p>© Portafolio</p>
+                    <p>© LeonardoWebsite</p>
+                </div>
             </div>
-        </footer>
+        </div>
+    </footer>
     )
 }

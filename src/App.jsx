@@ -1,14 +1,13 @@
+import { Routes, Route } from 'react-router-dom';
 import './index.css';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import SectionAboutMe from './components/SectionAboutMe';
 import SectionPrograms from './components/SectionPrograms';
 import SectionCharacteristics from './components/SectionCharacteristics';
-import SectionFinal from './components/SectionFinal';
 import Footer from './components/Footer';
-import Card from "./components/Card";
-import Button from "./components/Button";
-
+import "bootstrap/dist/css/bootstrap.min.css"; // Importar Bootstrap CSS
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 export default function App() {
   return (
@@ -17,42 +16,11 @@ export default function App() {
         <Nav/>
       </Header>
 
-      <SectionAboutMe/>
-      
-      <SectionPrograms>
-        <div className="programas">
-          <Card titleCard="Aplicativo CRUD" textCard="Programa que permite: &nbsp; crear, leer, actualizar, eliminar datos procedentes de una base de datos ya existente.">
-            <Button textButton="CRUD"/>
-          </Card>
-
-          <Card titleCard="Programa JS" textCard="Piano creado con lenguaje JavaScript, con sonido incluido y se puede tocar con algunas teclas del teclado.">
-            <Button textButton="Piano"/>
-          </Card>
-
-          <Card titleCard="WebSite" textCard="En este sitio web realizaremos el consumo de una API, esta con tematica de Rick And Morty,en React.">
-            <Button textButton="WebSite"/>
-          </Card>
-        </div>
-        <div className="programas">
-          <Card titleCard="Website" textCard="Pagina web sobre  las pel&iacute;culas de Jurassic Park y Jurassic World, El aplicativo se encuentra en construcci&oacute;n.">
-            <Button textButton="WebSite"/>
-          </Card>
-
-          <Card titleCard="Programa JS" textCard="Ruleta creada con lenguaje JavaScript, con preguntas al azar y sus respectivas respuestas.">
-            <Button textButton="Ruleta"/>
-          </Card>
-
-          <Card titleCard="Aplicativo PHP" textCard="Programa que permite: &nbsp; crear, leer, actualizar, eliminar datos procedentes de una base de datos ya existente.">
-            <Button textButton="CRUD"/>
-          </Card>
-        </div>
-      </SectionPrograms>
-
-      <SectionCharacteristics/>
-
-      <SectionFinal>
-        <Button textButton="Saber m&aacute;s"/>
-      </SectionFinal>
+      <Routes>
+            <Route path="/" element={<SectionAboutMe />} />
+            <Route path="/characteristics" element={<SectionCharacteristics />} />
+            <Route path="/programs" element={<SectionPrograms />} />
+      </Routes>
 
       <Footer/>
     </>
