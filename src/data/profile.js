@@ -67,7 +67,7 @@ const PAGES = 'https://leofadev.github.io';
 export const projects = [
   {
     title: 'Pinto Music',
-    description: 'App de música con registro e inicio de sesión, catálogo de artistas, álbumes y canciones consumido desde una API, favoritos y modo oscuro.',
+    description: 'App de música con inicio de sesión, catálogo de artistas, álbumes y canciones desde una API, favoritos y modo oscuro.',
     tags: ['Ionic', 'Angular', 'TypeScript', 'API REST'],
     repo: `${GITHUB}/pintoMusic`,
     demo: `${PAGES}/pintoMusic/`,
@@ -87,7 +87,7 @@ export const projects = [
   },
   {
     title: 'Jurassic App',
-    description: 'Catálogo de dinosaurios de la saga Jurassic Park con datos servidos desde Google Sheets mediante Apps Script.',
+    description: 'Catálogo de dinosaurios de Jurassic Park con datos servidos desde Google Sheets mediante Apps Script.',
     tags: ['React', 'Vite', 'Google Apps Script'],
     repo: `${GITHUB}/JurassicApp`,
     demo: `${PAGES}/JurassicApp/`,

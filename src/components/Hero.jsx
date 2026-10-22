@@ -4,7 +4,7 @@ import SocialLinks from './SocialLinks';
 
 export default function Hero() {
   return (
-    <section id="inicio" className="hero container">
+    <section className="hero" aria-label="Inicio">
       <p className="eyebrow">Hola, soy</p>
       <h1 className="hero-title">{profile.name}</h1>
       <p className="hero-role">{profile.role}</p>

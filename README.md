@@ -12,7 +12,7 @@ Portafolio personal de **Leonardo Pinto (LeofaDev)**, desarrollador Full Stack e
 
 ## Secciones
 
-Página única con navegación por anclas: **Inicio**, **Sobre mí** (educación e idiomas), **Experiencia**, **Habilidades**, **Proyectos** y **Contacto**.
+Landing de una sola pantalla: el menú muestra una sección a la vez (sin scroll entre secciones). Secciones: **Inicio**, **Sobre mí** (educación e idiomas), **Experiencia**, **Habilidades**, **Proyectos** y **Contacto**.
 
 ## Editar el contenido
 
@@ -22,9 +22,9 @@ Toda la información (perfil, experiencia, habilidades, proyectos y redes) está
 
 ```
 src/
-├── components/   # Header, Hero, About, Skills, Projects, Contact, Footer...
+├── components/   # Header, Hero, About, Experience, Skills, Projects, Contact...
 ├── data/         # profile.js: todo el contenido del sitio
-├── hooks/        # useTheme (tema claro/oscuro) y useReveal (animación al hacer scroll)
+├── hooks/        # useTheme (tema claro/oscuro) y useActiveSection (sección activa según el hash de la URL)
 ├── App.jsx
 └── main.jsx
 ```

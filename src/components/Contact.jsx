@@ -14,6 +14,7 @@ export default function Contact() {
           <FiMail aria-hidden="true" /> {profile.email}
         </a>
         <SocialLinks />
+        <p className="copyright">© {new Date().getFullYear()} {profile.name}</p>
       </div>
     </Section>
   );

@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 import { profile } from '../data/profile';
 
-const links = [
-  { href: '#sobre-mi', label: 'Sobre mí' },
-  { href: '#experiencia', label: 'Experiencia' },
-  { href: '#habilidades', label: 'Habilidades' },
-  { href: '#proyectos', label: 'Proyectos' },
-  { href: '#contacto', label: 'Contacto' },
-];
-
-export default function Header({ theme, onToggleTheme }) {
+export default function Header({ links, active, theme, onToggleTheme }) {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 
@@ -23,9 +15,15 @@ export default function Header({ theme, onToggleTheme }) {
         </a>
 
         <ul id="menu" className={`nav-links ${open ? 'is-open' : ''}`}>
-          {links.map(({ href, label }) => (
-            <li key={href}>
-              <a href={href} onClick={close}>{label}</a>
+          {links.map(({ id, label }) => (
+            <li key={id}>
+              <a
+                href={`#${id}`}
+                onClick={close}
+                aria-current={active === id ? 'page' : undefined}
+              >
+                {label}
+              </a>
             </li>
           ))}
         </ul>
@@ -56,6 +54,10 @@ export default function Header({ theme, onToggleTheme }) {
 }
 
 Header.propTypes = {
+  links: PropTypes.arrayOf(
+    PropTypes.shape({ id: PropTypes.string.isRequired, label: PropTypes.string.isRequired })
+  ).isRequired,
+  active: PropTypes.string.isRequired,
   theme: PropTypes.oneOf(['light', 'dark']).isRequired,
   onToggleTheme: PropTypes.func.isRequired,
 };
