@@ -959,6 +959,13 @@ a {
 .contact-title .char:nth-child(3n + 2) { background-position: 50% 0; }
 .contact-title .char:nth-child(3n) { background-position: 100% 0; }
 
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
 .contact-text {
   max-width: 520px;
   color: var(--muted);

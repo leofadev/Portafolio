@@ -4,6 +4,7 @@ import { FiMail } from 'react-icons/fi';
 import { profile } from '../data/profile';
 import { useAnimeScope } from '../hooks/useAnimeScope';
 import { introElements, isTouchDevice, prefersReducedMotion } from '../lib/motion';
+import CvButton from './CvButton';
 import SocialLinks from './SocialLinks';
 
 const TITLE = '¿Trabajamos juntos?';
@@ -72,10 +73,11 @@ export default function Contact() {
       <p className="contact-text" data-anim>
         ¿Tienes un proyecto o una oportunidad laboral? Escríbeme y con gusto conversamos.
       </p>
-      <div data-anim>
+      <div className="contact-actions" data-anim>
         <a ref={buttonRef} href={`mailto:${profile.email}`} className="btn btn-primary btn-lg">
           <FiMail aria-hidden="true" /> {profile.email}
         </a>
+        <CvButton className="btn btn-ghost btn-lg" />
       </div>
       <div data-anim>
         <SocialLinks />

@@ -12,6 +12,8 @@ export const profile = {
     'Actualmente curso noveno semestre de Ingeniería de Sistemas y en mi tiempo libre desarrollo proyectos personales con React, Angular y React Native.',
   ],
   languages: 'Español (nativo) · Inglés básico (A2)',
+  // PDF dentro de /public; para actualizarlo basta con reemplazar el archivo
+  cv: 'CV-Leonardo-Pinto.pdf',
 };
 
 // Cifras destacadas en "Sobre mí" (se animan con un contador)
@@ -58,7 +60,6 @@ export const education = [
 export const socials = [
   { name: 'GitHub', url: 'https://github.com/leofadev', icon: 'github' },
   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/leonardo-pinto-b72b1a24a', icon: 'linkedin' },
-  { name: 'Stack Overflow', url: 'https://es.stackoverflow.com/users/370778/leonardo-pinto', icon: 'stackoverflow' },
 ];
 
 export const skills = [
