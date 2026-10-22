@@ -1,53 +1,60 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
-import Aos from "aos";
-// import { Link } from 'react-router-dom';
-import "aos/dist/aos.css";
+import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
+import { profile } from '../data/profile';
 
-export default function Header({ children }) {
-    useEffect(() => {
-        Aos.init();
-    }, []);
+const links = [
+  { href: '#sobre-mi', label: 'Sobre mí' },
+  { href: '#habilidades', label: 'Habilidades' },
+  { href: '#proyectos', label: 'Proyectos' },
+  { href: '#contacto', label: 'Contacto' },
+];
 
-    return (
-        <>
-            <header className="container-fluid p-0">
-                <div className="container">
-                    <div className="row align-items-center">
-                        {/* <div className="col-4">
-                            <Link
-                            to="/"
-                            className="logo text-dark font-weight-bold"
-                            data-aos="fade-down-right"
-                            data-aos-duration={1200}
-                            >
-                            <img className='img-fluid w-25' src="https://lh3.googleusercontent.com/d/1eZcEHorSKKGsoqDw4hPhOSgAxO0saQZX=w250?authuser=0" alt="foto" />
-                            </Link>
-                        </div> */}
-                        <div className="col-sm-12 col-md-12 col-lg-12">
-                            {children}
-                        </div>
-                    </div>
-                </div>
-            </header>
+export default function Header({ theme, onToggleTheme }) {
+  const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
 
-        </>
-    );
+  return (
+    <header className="header">
+      <nav className="nav container" aria-label="Principal">
+        <a href="#inicio" className="logo" onClick={close}>
+          {profile.alias}
+        </a>
+
+        <ul id="menu" className={`nav-links ${open ? 'is-open' : ''}`}>
+          {links.map(({ href, label }) => (
+            <li key={href}>
+              <a href={href} onClick={close}>{label}</a>
+            </li>
+          ))}
+        </ul>
+
+        <div className="nav-actions">
+          <button
+            type="button"
+            className="icon-btn"
+            onClick={onToggleTheme}
+            aria-label={theme === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'}
+          >
+            {theme === 'dark' ? <FiSun /> : <FiMoon />}
+          </button>
+          <button
+            type="button"
+            className="icon-btn menu-btn"
+            onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            aria-controls="menu"
+            aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+          >
+            {open ? <FiX /> : <FiMenu />}
+          </button>
+        </div>
+      </nav>
+    </header>
+  );
 }
 
 Header.propTypes = {
-    children: PropTypes.node
+  theme: PropTypes.oneOf(['light', 'dark']).isRequired,
+  onToggleTheme: PropTypes.func.isRequired,
 };
-
-            {/* <header className="container-fluid p-3 bg-warning d-flex align-items-center justify-content-between">
-                <div className="row">
-                    <div className="col-4">
-                    <Link to="/" className="logo" data-aos="fade-down-right" data-aos-duration="1200">
-                        LeofaDev
-                    </Link>
-                    </div>
-                    <div className="col-8">
-                    {children}
-                    </div>
-                </div>
-            </header> */}
