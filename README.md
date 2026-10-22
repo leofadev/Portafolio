@@ -30,6 +30,8 @@ Landing de una sola pantalla: el menú muestra una sección a la vez (sin scroll
 
 Toda la información (perfil, experiencia, habilidades, proyectos y redes) está en [`src/data/profile.js`](src/data/profile.js). Para agregar un proyecto basta con añadir un objeto al arreglo `projects`; no hace falta tocar los componentes.
 
+El CV descargable está en [`public/CV-Leonardo-Pinto.pdf`](public/CV-Leonardo-Pinto.pdf): para actualizarlo, reemplaza ese archivo manteniendo el nombre (o cambia `cv` en `profile.js`).
+
 ## Estructura
 
 ```

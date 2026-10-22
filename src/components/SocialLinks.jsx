@@ -1,10 +1,9 @@
-import { FaGithub, FaLinkedin, FaStackOverflow } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { socials } from '../data/profile';
 
 const icons = {
   github: FaGithub,
   linkedin: FaLinkedin,
-  stackoverflow: FaStackOverflow,
 };
 
 export default function SocialLinks() {

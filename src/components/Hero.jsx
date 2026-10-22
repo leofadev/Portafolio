@@ -3,6 +3,7 @@ import { FiArrowRight, FiMapPin } from 'react-icons/fi';
 import { profile } from '../data/profile';
 import { useAnimeScope } from '../hooks/useAnimeScope';
 import { introElements } from '../lib/motion';
+import CvButton from './CvButton';
 import SocialLinks from './SocialLinks';
 import TechCube from './TechCube';
 
@@ -63,6 +64,7 @@ export default function Hero() {
             Ver proyectos <FiArrowRight aria-hidden="true" />
           </a>
           <a href="#contacto" className="btn btn-ghost">Contactarme</a>
+          <CvButton />
         </div>
         <div data-anim>
           <SocialLinks />
