@@ -14,6 +14,13 @@ export const profile = {
   languages: 'Español (nativo) · Inglés básico (A2)',
 };
 
+// Cifras destacadas en "Sobre mí" (se animan con un contador)
+export const stats = [
+  { value: 2, suffix: '+', label: 'Años de experiencia' },
+  { value: 9, suffix: '.º', label: 'Semestre de Ingeniería' },
+  { value: 2, suffix: '', label: 'Empresas' },
+];
+
 export const experience = [
   {
     role: 'Desarrollador de Software Full Stack',

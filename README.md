@@ -7,8 +7,20 @@ Portafolio personal de **Leonardo Pinto (LeofaDev)**, desarrollador Full Stack e
 ## Tecnologías
 
 - [React 18](https://react.dev/) + [Vite](https://vitejs.dev/) (con SWC)
-- CSS propio con tema claro/oscuro (sin frameworks de estilos)
+- [anime.js 4](https://animejs.com/) para todas las animaciones
+- CSS propio con efectos 3D, glassmorphism y tema claro/oscuro
 - [React Icons](https://react-icons.github.io/react-icons/)
+
+## Animaciones
+
+- Transición 3D entre secciones (la actual se aleja y la nueva entra girando)
+- Fondo de puntos que ondula al hacer clic y al cambiar de sección (`stagger` en rejilla)
+- Cubo 3D con el stack que gira y se inclina hacia el puntero
+- Nombre que aparece letra por letra y rol con efecto *scramble*
+- Tarjetas con inclinación 3D y brillo que sigue al puntero
+- Línea de tiempo de experiencia que se dibuja (SVG), contadores animados y botón magnético
+
+Si el sistema tiene activado *reducir movimiento*, las animaciones se desactivan.
 
 ## Secciones
 
@@ -24,7 +36,8 @@ Toda la información (perfil, experiencia, habilidades, proyectos y redes) está
 src/
 ├── components/   # Header, Hero, About, Experience, Skills, Projects, Contact...
 ├── data/         # profile.js: todo el contenido del sitio
-├── hooks/        # useTheme (tema claro/oscuro) y useActiveSection (sección activa según el hash de la URL)
+├── hooks/        # useTheme, useActiveSection, useAnimeScope (anime.js + React) y useTilt
+├── lib/          # motion.js: utilidades de animación compartidas
 ├── App.jsx
 └── main.jsx
 ```

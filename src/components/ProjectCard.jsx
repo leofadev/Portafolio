@@ -1,10 +1,24 @@
 import PropTypes from 'prop-types';
 import { FaGithub } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
+import TiltCard from './TiltCard';
 
-export default function ProjectCard({ title, description, tags, repo, demo }) {
+export default function ProjectCard({ index, title, description, tags, repo, demo }) {
   return (
-    <article className="card project">
+    <TiltCard as="article" className="project">
+      <div className="project-top">
+        <span className="project-index">{String(index).padStart(2, '0')}</span>
+        <div className="project-links">
+          {demo && (
+            <a href={demo} target="_blank" rel="noreferrer" aria-label={`Demo de ${title}`} title="Demo">
+              <FiExternalLink />
+            </a>
+          )}
+          <a href={repo} target="_blank" rel="noreferrer" aria-label={`Código de ${title}`} title="Código">
+            <FaGithub />
+          </a>
+        </div>
+      </div>
       <h3 className="card-title">{title}</h3>
       <p className="project-text">{description}</p>
       <ul className="tags">
@@ -12,21 +26,12 @@ export default function ProjectCard({ title, description, tags, repo, demo }) {
           <li key={tag} className="tag">{tag}</li>
         ))}
       </ul>
-      <div className="project-links">
-        {demo && (
-          <a href={demo} target="_blank" rel="noreferrer" className="btn btn-primary btn-sm">
-            <FiExternalLink aria-hidden="true" /> Demo
-          </a>
-        )}
-        <a href={repo} target="_blank" rel="noreferrer" className="btn btn-ghost btn-sm">
-          <FaGithub aria-hidden="true" /> Código
-        </a>
-      </div>
-    </article>
+    </TiltCard>
   );
 }
 
 ProjectCard.propTypes = {
+  index: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
