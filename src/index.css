@@ -215,7 +215,6 @@ a {
 .panel {
   margin-block: auto;
   padding-block: 24px;
-  transform-style: preserve-3d;
 }
 
 /* ---------- Botones ---------- */
@@ -393,8 +392,10 @@ a {
 }
 
 /* ---------- Tarjetas con inclinación 3D ---------- */
+/* Sin preserve-3d: si la tarjeta inclinada quedara detrás del plano del contenedor,
+   el contenedor taparía los clics y el hover. La perspectiva propia mantiene el efecto 3D. */
 .tilt-wrap {
-  transform-style: preserve-3d;
+  perspective: 900px;
 }
 
 .card {
@@ -407,7 +408,6 @@ a {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   overflow: hidden;
-  transform-style: preserve-3d;
   transition: border-color 0.4s, box-shadow 0.4s;
 }
 
@@ -426,11 +426,11 @@ a {
   pointer-events: none;
 }
 
-.card:hover {
+.tilt-wrap:hover .card {
   box-shadow: 0 30px 60px -30px color-mix(in srgb, var(--accent-1) 55%, transparent);
 }
 
-.card:hover::before {
+.tilt-wrap:hover .card::before {
   opacity: 1;
 }
 
@@ -443,7 +443,7 @@ a {
   pointer-events: none;
 }
 
-.card:hover .card-glare {
+.tilt-wrap:hover .card-glare {
   opacity: 1;
 }
 

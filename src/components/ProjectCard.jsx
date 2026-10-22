@@ -6,7 +6,7 @@ import TiltCard from './TiltCard';
 export default function ProjectCard({ index, title, description, tags, repo, demo }) {
   return (
     <TiltCard as="article" className="project">
-      <div className="project-top">
+      <div className="project-top" data-tilt-flat>
         <span className="project-index">{String(index).padStart(2, '0')}</span>
         <div className="project-links">
           {demo && (
