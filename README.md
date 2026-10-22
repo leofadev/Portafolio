@@ -1,6 +1,6 @@
 # Portafolio
 
-Portafolio personal de **Leonardo Pinto (LeofaDev)**, desarrollador de software especializado en Laravel, PHP y MySQL.
+Portafolio personal de **Leonardo Pinto (LeofaDev)**, desarrollador Full Stack especializado en Laravel, PHP y MySQL.
 
 🔗 **Demo:** [leofadev.github.io/Portafolio](https://leofadev.github.io/Portafolio/)
 
@@ -12,7 +12,7 @@ Portafolio personal de **Leonardo Pinto (LeofaDev)**, desarrollador de software 
 
 ## Secciones
 
-Página única con navegación por anclas: **Inicio**, **Sobre mí** (experiencia y educación), **Habilidades**, **Proyectos** y **Contacto**.
+Página única con navegación por anclas: **Inicio**, **Sobre mí** (educación e idiomas), **Experiencia**, **Habilidades**, **Proyectos** y **Contacto**.
 
 ## Editar el contenido
 

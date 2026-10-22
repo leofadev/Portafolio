@@ -3,24 +3,49 @@
 export const profile = {
   name: 'Leonardo Pinto',
   alias: 'LeofaDev',
-  role: 'Desarrollador de Software',
-  headline: 'Construyo aplicaciones web con Laravel, PHP y MySQL, y las acompaño con interfaces en React.',
-  location: 'Colombia',
+  role: 'Desarrollador de Software Full Stack',
+  headline: 'Especializado en Laravel y PHP. Desarrollo software administrativo y contable para PyMES, enfocado en soluciones funcionales que respondan a necesidades reales.',
+  location: 'Barranquilla, Colombia',
   email: 'pintoleonardo1023@gmail.com',
   about: [
-    'Soy desarrollador de software enfocado en el backend con Laravel y PHP. Trabajo a diario construyendo, optimizando y manteniendo aplicaciones web, desde el modelo de datos en MySQL hasta las vistas en Blade y JavaScript.',
-    'Actualmente estudio Ingeniería de Sistemas y en mi tiempo libre desarrollo proyectos personales con React, Angular y React Native para seguir ampliando mi stack.',
+    'Soy desarrollador Full Stack con experiencia construyendo software administrativo y contable con Laravel, PHP y MySQL. Me oriento a la mejora continua, la eficiencia operativa y a entregar soluciones que resuelvan problemas reales de los clientes.',
+    'Actualmente curso noveno semestre de Ingeniería de Sistemas y en mi tiempo libre desarrollo proyectos personales con React, Angular y React Native.',
   ],
+  languages: 'Español (nativo) · Inglés básico (A2)',
 };
 
 export const experience = [
-  { company: 'RoshPi SAS', role: 'Desarrollador de Software', period: 'Actual' },
-  { company: 'Pastas Comarrico · Grupo Nutresa', role: 'Desarrollador de Software', period: 'Anterior' },
+  {
+    role: 'Desarrollador de Software Full Stack',
+    company: 'RoshPi',
+    description: 'Software administrativo y contable para PyMES',
+    period: 'Oct 2024 – Presente',
+    highlights: [
+      'Reconstruí por completo el módulo de restaurante, mejorando su estructura e integrándolo al ecosistema de la plataforma.',
+      'Desarrollé el módulo de remisiones de ventas para registrar y hacer seguimiento de entregas parciales.',
+      'Implementé autenticación mediante clave dinámica, reforzando la seguridad de acceso al sistema.',
+      'Mejoras continuas de interfaz, rendimiento y nuevos requerimientos de clientes.',
+    ],
+  },
+  {
+    role: 'Desarrollador de Software',
+    company: 'Grupo Nutresa – Pastas Comarrico',
+    description: 'Empresa del sector de alimentos',
+    period: 'Oct 2023 – Abr 2024',
+    highlights: [
+      'Desarrollé un sistema web de alarmas para la fumigación de vehículos con alertas automáticas 4 días antes del vencimiento.',
+      'Construí un módulo de control de averías con formularios dinámicos según el código de producto.',
+      'Automaticé el reporte de entrega de turno: generación de PDF, envío por Gmail y almacenamiento en Drive.',
+      'Digitalicé procesos logísticos manuales, reduciendo reprocesos y mejorando la trazabilidad.',
+    ],
+  },
 ];
 
 export const education = [
-  { title: 'Ingeniería de Sistemas', period: 'En curso' },
-  { title: 'Técnico en Programación de Software', period: 'Finalizado' },
+  { title: 'Ingeniería de Sistemas', institution: 'Politécnico Costa Atlántica (UPCA)', period: 'Noveno semestre' },
+  { title: 'Tecnólogo en Desarrollo de Software', institution: 'Politécnico Costa Atlántica (UPCA)', period: '2025' },
+  { title: 'Tecnólogo en Análisis y Desarrollo de Software', institution: 'SENA', period: '2022 – 2024' },
+  { title: 'Técnico en Programación de Software', institution: 'SENA', period: '2020 – 2021' },
 ];
 
 export const socials = [
@@ -30,9 +55,10 @@ export const socials = [
 ];
 
 export const skills = [
-  { group: 'Backend', items: ['PHP', 'Laravel', 'MySQL', 'Node.js', 'API REST'] },
-  { group: 'Frontend', items: ['JavaScript', 'React', 'Blade', 'HTML', 'CSS', 'Tailwind', 'Bootstrap', 'jQuery'] },
-  { group: 'Herramientas', items: ['Git', 'GitHub', 'Postman', 'VS Code', 'Bash'] },
+  { group: 'Backend', items: ['PHP', 'Laravel', 'API REST'] },
+  { group: 'Frontend', items: ['JavaScript', 'jQuery', 'Blade', 'React', 'HTML', 'CSS', 'Bootstrap', 'Tailwind', 'Apps Script'] },
+  { group: 'Bases de datos', items: ['MySQL', 'phpMyAdmin', 'MySQL Workbench'] },
+  { group: 'Herramientas', items: ['Git', 'Jira', 'Trello', 'Postman', 'VS Code', 'Laragon', 'XAMPP', 'npm', 'Looker Studio'] },
 ];
 
 const GITHUB = 'https://github.com/leofadev';
