@@ -12,7 +12,7 @@
   --accent-3: #f472b6;
   --gradient: linear-gradient(120deg, var(--accent-1), var(--accent-2));
   --on-accent: #ffffff;
-  --dot: rgb(139 92 246 / 0.55);
+  --dot: color-mix(in srgb, var(--accent-1) 55%, transparent);
   --orb-opacity: 0.55;
   --radius: 18px;
   --max-width: 1140px;
@@ -32,7 +32,7 @@
   --accent-1: #7c3aed;
   --accent-2: #0891b2;
   --accent-3: #db2777;
-  --dot: rgb(124 58 237 / 0.4);
+  --dot: color-mix(in srgb, var(--accent-1) 40%, transparent);
   --orb-opacity: 0.35;
   color-scheme: light;
 }
@@ -186,7 +186,7 @@ a {
   width: 520px;
   height: 520px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(139 92 246 / 0.16), transparent 65%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent-1) 16%, transparent), transparent 65%);
   pointer-events: none;
 }
 
@@ -239,7 +239,7 @@ a {
 }
 
 .btn-primary:hover {
-  box-shadow: 0 14px 40px -8px var(--accent-1), 0 0 0 4px rgb(139 92 246 / 0.2);
+  box-shadow: 0 14px 40px -8px var(--accent-1), 0 0 0 4px color-mix(in srgb, var(--accent-1) 20%, transparent);
 }
 
 .btn-ghost {
@@ -427,7 +427,7 @@ a {
 }
 
 .card:hover {
-  box-shadow: 0 30px 60px -30px rgb(139 92 246 / 0.55);
+  box-shadow: 0 30px 60px -30px color-mix(in srgb, var(--accent-1) 55%, transparent);
 }
 
 .card:hover::before {
@@ -491,7 +491,7 @@ a {
 .badge {
   padding: 3px 11px;
   border-radius: 999px;
-  background: rgb(139 92 246 / 0.14);
+  background: color-mix(in srgb, var(--accent-1) 14%, transparent);
   color: var(--accent-2);
   font-size: 0.76rem;
   font-weight: 600;
@@ -684,14 +684,14 @@ a {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: 1px solid rgb(139 92 246 / 0.5);
+  border: 1px solid color-mix(in srgb, var(--accent-1) 50%, transparent);
   border-radius: 16px;
-  background: linear-gradient(145deg, rgb(139 92 246 / 0.22), rgb(34 211 238 / 0.12));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--accent-1) 22%, transparent), color-mix(in srgb, var(--accent-2) 12%, transparent));
   backdrop-filter: blur(6px);
   color: var(--text);
   font-family: var(--font-display);
   font-weight: 600;
-  box-shadow: inset 0 0 40px rgb(139 92 246 / 0.25);
+  box-shadow: inset 0 0 40px color-mix(in srgb, var(--accent-1) 25%, transparent);
 }
 
 .cube-face svg {
