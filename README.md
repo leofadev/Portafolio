@@ -1,12 +1,45 @@
 # Portafolio
 
+Portafolio personal de **Leonardo Pinto (LeofaDev)**, analista y desarrollador de software. Presenta quién soy y los proyectos que he realizado.
+
 🔗 **Demo:** [leofadev.github.io/Portafolio](https://leofadev.github.io/Portafolio/)
 
-## React + Vite
+## Tecnologías
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [React 18](https://react.dev/) + [Vite](https://vitejs.dev/) (con SWC)
+- [React Router](https://reactrouter.com/) para la navegación entre secciones
+- [Bootstrap 5](https://getbootstrap.com/) para el diseño responsive
+- [AOS](https://michalsnik.github.io/aos/) para animaciones al hacer scroll
+- [React Icons](https://react-icons.github.io/react-icons/)
 
-Currently, two official plugins are available:
+## Secciones
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+| Ruta | Contenido |
+|---|---|
+| `/` | Quién soy: presentación y redes |
+| `/programs` | Proyectos realizados *(en desarrollo)* |
+| `/characteristics` | Tecnologías y habilidades *(en desarrollo)* |
+
+## Estructura
+
+```
+src/
+├── components/   # Header, Nav, Footer, Card, Button y secciones
+├── App.jsx       # Definición de rutas
+└── main.jsx      # Punto de entrada (BrowserRouter)
+```
+
+## Ejecutar en local
+
+Requiere Node.js 18 o superior.
+
+```bash
+npm install
+npm run dev       # servidor de desarrollo en http://localhost:5173/Portafolio/
+npm run build     # build de producción en dist/
+npm run preview   # previsualizar el build
+```
+
+## Despliegue
+
+Cada push a `main` compila y publica el sitio en GitHub Pages mediante el workflow [`deploy-pages.yml`](.github/workflows/deploy-pages.yml).
