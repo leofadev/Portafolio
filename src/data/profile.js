@@ -24,6 +24,8 @@ export const profile = {
   languages: { es: 'Español (nativo) · Inglés básico (A2)', en: 'Spanish (native) · English (basic, A2)' },
   // PDF dentro de /public; para actualizarlo basta con reemplazar el archivo
   cv: 'CV-Leonardo-Pinto.pdf',
+  // Formulario de contacto (FormSubmit). Tras activarlo puedes cambiar el correo por el alias que te envían
+  contactEndpoint: 'https://formsubmit.co/ajax/pintoleonardo1023@gmail.com',
 };
 
 // Cifras destacadas en "Sobre mí" (se animan con un contador)
