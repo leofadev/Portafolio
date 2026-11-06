@@ -4,6 +4,7 @@ import { animate, spring, stagger } from 'animejs';
 import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 import { useI18n } from '../i18n/useI18n';
 import { prefersReducedMotion } from '../lib/motion';
+import { trackEvent } from '../lib/analytics';
 
 export default function Header({ links, active, theme, onToggleTheme }) {
   const [open, setOpen] = useState(false);
@@ -73,7 +74,10 @@ export default function Header({ links, active, theme, onToggleTheme }) {
           <button
             type="button"
             className="icon-btn lang-btn"
-            onClick={toggleLang}
+            onClick={() => {
+              trackEvent(`idioma-${lang === 'es' ? 'en' : 'es'}`);
+              toggleLang();
+            }}
             aria-label={t.switchLang}
             title={t.switchLang}
           >

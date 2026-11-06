@@ -4,6 +4,7 @@ import { FiAlertCircle, FiCheckCircle, FiSend } from 'react-icons/fi';
 import { useI18n } from '../i18n/useI18n';
 import { prefersReducedMotion } from '../lib/motion';
 import { sendMessage } from '../lib/sendMessage';
+import { trackEvent } from '../lib/analytics';
 
 const EMPTY = { name: '', email: '', message: '', honey: '' };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -58,6 +59,7 @@ export default function ContactForm() {
         honey: values.honey,
       }, f.subject);
       setStatus('success');
+      trackEvent('formulario-enviado', 'Mensaje enviado desde el formulario');
       setValues(EMPTY);
     } catch {
       setStatus('error');

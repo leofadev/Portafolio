@@ -4,6 +4,8 @@ import { useTheme } from './hooks/useTheme';
 import { useI18n } from './i18n/useI18n';
 import { useActiveSection } from './hooks/useActiveSection';
 import { prefersReducedMotion } from './lib/motion';
+import { trackSection } from './lib/analytics';
+import { ui } from './i18n/ui';
 import Background from './components/Background';
 import CursorGlow from './components/CursorGlow';
 import Header from './components/Header';
@@ -61,6 +63,11 @@ export default function App() {
       exit.cancel();
     };
   }, [target, shown]);
+
+  // Cuenta cada sección mostrada como una página (títulos en español para no partir las estadísticas por idioma)
+  useEffect(() => {
+    trackSection(shown, ui.es.nav[shown] ?? ui.es.heroLabel);
+  }, [shown]);
 
   // Entrada 3D de la nueva sección
   useLayoutEffect(() => {

@@ -34,6 +34,12 @@ El sitio está en **español e inglés**. El idioma inicial es el del navegador 
 
 Los mensajes se envían con [FormSubmit](https://formsubmit.co) (sin backend propio) a la dirección configurada en `contactEndpoint` de `profile.js`. Incluye validación, campo trampa contra bots y estados de envío, éxito y error. La primera vez FormSubmit envía un correo de activación que hay que confirmar.
 
+## Estadísticas
+
+Las visitas se miden con [GoatCounter](https://www.goatcounter.com) (sin cookies ni datos personales), configurado en `analytics` de `profile.js`. Cada sección cuenta como una página (`/Portafolio/#proyectos`) y se registran eventos: `descarga-cv`, `formulario-enviado`, `demo-<repo>`, `codigo-<repo>`, `idioma-en`/`idioma-es` y `red-<red>`.
+
+Para no contar tus propias visitas, abre una vez [`/Portafolio/#toggle-goatcounter`](https://leofadev.github.io/Portafolio/#toggle-goatcounter) en tu navegador.
+
 ## Editar el contenido
 
 Toda la información (perfil, experiencia, habilidades, proyectos y redes) está en [`src/data/profile.js`](src/data/profile.js). Los textos traducibles se escriben como `{ es: '…', en: '…' }`; los textos de la interfaz (botones, títulos) están en [`src/i18n/ui.js`](src/i18n/ui.js). Para agregar un proyecto basta con añadir un objeto al arreglo `projects`; no hace falta tocar los componentes.

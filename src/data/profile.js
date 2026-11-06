@@ -26,6 +26,8 @@ export const profile = {
   cv: 'CV-Leonardo-Pinto.pdf',
   // Formulario de contacto (FormSubmit). Tras activarlo puedes cambiar el correo por el alias que te envían
   contactEndpoint: 'https://formsubmit.co/ajax/pintoleonardo1023@gmail.com',
+  // Estadísticas de visitas (GoatCounter, sin cookies). Vacío para desactivarlas
+  analytics: 'https://leofadev.goatcounter.com/count',
 };
 
 // Cifras destacadas en "Sobre mí" (se animan con un contador)

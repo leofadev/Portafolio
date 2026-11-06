@@ -1,5 +1,6 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { socials } from '../data/profile';
+import { trackEvent } from '../lib/analytics';
 
 const icons = {
   github: FaGithub,
@@ -13,7 +14,7 @@ export default function SocialLinks() {
         const Icon = icons[icon];
         return (
           <li key={name}>
-            <a href={url} target="_blank" rel="noreferrer" aria-label={name} title={name}>
+            <a href={url} target="_blank" rel="noreferrer" aria-label={name} title={name} onClick={() => trackEvent(`red-${icon}`)}>
               <Icon />
             </a>
           </li>
