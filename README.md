@@ -50,6 +50,14 @@ Al compilar, un plugin de Vite (`vite.config.js` + `src/lib/seo.js`) inserta en 
 
 El mapa del sitio está en [`public/sitemap.xml`](public/sitemap.xml).
 
+## Rendimiento
+
+Lighthouse (móvil): **98** en rendimiento y 100 en accesibilidad, buenas prácticas y SEO.
+
+- Fuentes alojadas en el sitio con [Fontsource](https://fontsource.org) (sin peticiones a Google Fonts que bloqueen la carga)
+- Las animaciones infinitas (cubo, anillos, flotación y orbes) son CSS, así las mueve la GPU sin ocupar el hilo principal; anime.js se usa para las entradas y las interacciones
+- La onda del fondo empieza tras la entrada del contenido y se pausa cuando la pestaña no está visible
+
 ## Editar el contenido
 
 Toda la información (perfil, experiencia, habilidades, proyectos y redes) está en [`src/data/profile.js`](src/data/profile.js). Los textos traducibles se escriben como `{ es: '…', en: '…' }`; los textos de la interfaz (botones, títulos) están en [`src/i18n/ui.js`](src/i18n/ui.js). Para agregar un proyecto basta con añadir un objeto al arreglo `projects`; no hace falta tocar los componentes.

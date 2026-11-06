@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { animate, createAnimatable } from 'animejs';
+import { createAnimatable } from 'animejs';
 import { SiJavascript, SiLaravel, SiMysql, SiPhp, SiReact, SiTailwindcss } from 'react-icons/si';
 import { isTouchDevice, prefersReducedMotion } from '../lib/motion';
 
@@ -14,67 +14,32 @@ const faces = [
 
 // Cubo 3D con el stack principal: gira solo y se inclina hacia el puntero.
 export default function TechCube() {
-  const stageRef = useRef(null);
-  const cubeRef = useRef(null);
-  const ringsRef = useRef(null);
+  const tiltRef = useRef(null);
 
+  // El giro, los anillos y la flotación son animaciones CSS (las mueve la GPU, sin costo para el hilo principal);
+  // aquí solo se inclina el conjunto hacia el puntero
   useEffect(() => {
-    if (prefersReducedMotion()) return;
-
-    const spin = animate(cubeRef.current, {
-      rotateY: { from: 0, to: 360 },
-      rotateX: { from: -25, to: 335 },
-      duration: 24000,
-      ease: 'linear',
-      loop: true,
-    });
-    const rings = animate(ringsRef.current.children, {
-      rotateZ: { from: 0, to: 360 },
-      duration: (_, i) => 14000 + i * 6000,
-      ease: 'linear',
-      loop: true,
-      reversed: (_, i) => i % 2 === 1,
-    });
-    const float = animate(stageRef.current, {
-      translateY: { from: -10, to: 10 },
-      duration: 3200,
-      ease: 'inOutSine',
-      loop: true,
-      alternate: true,
-    });
-
-    let tilt;
-    let onMove;
-    if (!isTouchDevice()) {
-      tilt = createAnimatable(ringsRef.current.parentElement, {
-        rotateX: 900,
-        rotateY: 900,
-        ease: 'out(3)',
-      });
-      onMove = (e) => {
-        tilt.rotateY((e.clientX / window.innerWidth - 0.5) * 40);
-        tilt.rotateX((0.5 - e.clientY / window.innerHeight) * 40);
-      };
-      window.addEventListener('pointermove', onMove);
-    }
-
+    if (prefersReducedMotion() || isTouchDevice()) return;
+    const tilt = createAnimatable(tiltRef.current, { rotateX: 900, rotateY: 900, ease: 'out(3)' });
+    const onMove = (e) => {
+      tilt.rotateY((e.clientX / window.innerWidth - 0.5) * 40);
+      tilt.rotateX((0.5 - e.clientY / window.innerHeight) * 40);
+    };
+    window.addEventListener('pointermove', onMove);
     return () => {
-      [spin, rings, float].forEach((a) => a.revert());
-      if (tilt) {
-        window.removeEventListener('pointermove', onMove);
-        tilt.revert();
-      }
+      window.removeEventListener('pointermove', onMove);
+      tilt.revert();
     };
   }, []);
 
   return (
-    <div className="cube-stage" ref={stageRef} aria-hidden="true">
-      <div className="cube-tilt">
-        <div className="cube-rings" ref={ringsRef}>
+    <div className="cube-stage" aria-hidden="true">
+      <div className="cube-tilt" ref={tiltRef}>
+        <div className="cube-rings">
           <span className="ring ring-1" />
           <span className="ring ring-2" />
         </div>
-        <div className="cube" ref={cubeRef}>
+        <div className="cube">
           {faces.map(({ name, Icon }, i) => (
             <div key={name} className={`cube-face face-${i + 1}`}>
               <Icon />

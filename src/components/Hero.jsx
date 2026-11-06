@@ -25,7 +25,7 @@ export default function Hero() {
       opacity: { from: 0, duration: 200, delay: 700 },
       innerHTML: scrambleText({ chars: 'A-Z!%#_', cursor: true, override: '', delay: 700 }),
     });
-    introElements('[data-anim]', 500);
+    introElements('[data-anim]', 200);
 
     // Rebote de cada letra al pasar el puntero
     const bounce = (e) =>

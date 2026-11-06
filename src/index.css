@@ -150,6 +150,30 @@ a {
   border-radius: 50%;
   filter: blur(90px);
   opacity: var(--orb-opacity);
+  will-change: transform;
+  animation: orb-drift 12s ease-in-out infinite alternate;
+}
+
+.orb-2 {
+  animation-duration: 14s;
+  animation-name: orb-drift-2;
+}
+
+.orb-3 {
+  animation-duration: 10s;
+  animation-name: orb-drift-3;
+}
+
+@keyframes orb-drift {
+  to { transform: translate(160px, 120px) scale(1.25); }
+}
+
+@keyframes orb-drift-2 {
+  to { transform: translate(-170px, -110px) scale(0.85); }
+}
+
+@keyframes orb-drift-3 {
+  to { transform: translate(-120px, 130px) scale(1.2); }
 }
 
 .orb-1 {
@@ -632,6 +656,7 @@ a {
 
 .cube-stage {
   --size: 170px;
+  animation: cube-float 3.2s ease-in-out infinite alternate;
   width: calc(var(--size) * 2);
   height: calc(var(--size) * 2);
   display: grid;
@@ -664,7 +689,7 @@ a {
   width: calc(var(--size) * 1.9);
   height: calc(var(--size) * 1.9);
   margin: calc(var(--size) * -0.95);
-  transform: rotateX(70deg);
+  animation: ring-spin 14s linear infinite;
 }
 
 .ring-2 {
@@ -672,7 +697,7 @@ a {
   height: calc(var(--size) * 2.2);
   margin: calc(var(--size) * -1.1);
   border-color: var(--accent-1);
-  transform: rotateY(70deg);
+  animation: ring-spin 20s linear infinite reverse;
 }
 
 .cube {
@@ -681,6 +706,21 @@ a {
   height: var(--size);
   transform-style: preserve-3d;
   transform: rotateX(-25deg) rotateY(35deg);
+  animation: cube-spin 24s linear infinite;
+}
+
+@keyframes cube-spin {
+  from { transform: rotateX(-25deg) rotateY(0deg); }
+  to { transform: rotateX(335deg) rotateY(360deg); }
+}
+
+@keyframes ring-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes cube-float {
+  from { transform: translateY(-10px); }
+  to { transform: translateY(10px); }
 }
 
 .cube-face {
@@ -1218,7 +1258,11 @@ a {
 
 /* ---------- Movimiento reducido ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .pulse-dot {
+  .pulse-dot,
+  .orb,
+  .cube,
+  .ring,
+  .cube-stage {
     animation: none;
   }
 }

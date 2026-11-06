@@ -78,7 +78,8 @@ export default function Header({ links, active, theme, onToggleTheme }) {
               trackEvent(`idioma-${lang === 'es' ? 'en' : 'es'}`);
               toggleLang();
             }}
-            aria-label={t.switchLang}
+            // El nombre accesible incluye el texto visible (EN/ES), como pide WCAG
+            aria-label={`${lang === 'es' ? 'EN' : 'ES'} · ${t.switchLang}`}
             title={t.switchLang}
           >
             {lang === 'es' ? 'EN' : 'ES'}

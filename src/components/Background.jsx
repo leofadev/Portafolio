@@ -5,6 +5,7 @@ import { prefersReducedMotion } from '../lib/motion';
 
 const CELL = 56;
 const IDLE_RIPPLE_MS = 7000;
+const RIPPLE_DELAY_MS = 600;
 
 const measure = () => ({
   cols: Math.ceil(window.innerWidth / CELL),
@@ -15,7 +16,6 @@ const measure = () => ({
 export default function Background({ pulseKey }) {
   const [grid, setGrid] = useState(measure);
   const gridRef = useRef(null);
-  const orbsRef = useRef(null);
 
   const ripple = useCallback(
     (from) => {
@@ -57,35 +57,22 @@ export default function Background({ pulseKey }) {
     return () => window.removeEventListener('pointerdown', onPointerDown);
   }, [grid, ripple]);
 
-  // Onda al cambiar de sección y, en reposo, cada cierto tiempo
+  // Onda al cambiar de sección (con un leve retraso para no competir con la entrada del contenido)
+  // y, en reposo, cada cierto tiempo
   useEffect(() => {
-    ripple('center');
+    const first = setTimeout(() => ripple('center'), RIPPLE_DELAY_MS);
     const id = setInterval(() => {
       if (!document.hidden) ripple(utils.random(0, grid.cols * grid.rows - 1));
     }, IDLE_RIPPLE_MS);
-    return () => clearInterval(id);
+    return () => {
+      clearTimeout(first);
+      clearInterval(id);
+    };
   }, [pulseKey, grid, ripple]);
-
-  // Orbes flotando
-  useEffect(() => {
-    if (prefersReducedMotion()) return;
-    const animations = [...orbsRef.current.children].map((orb) =>
-      animate(orb, {
-        translateX: () => utils.random(-180, 180),
-        translateY: () => utils.random(-140, 140),
-        scale: () => utils.random(0.8, 1.3, 2),
-        duration: () => utils.random(9000, 14000),
-        ease: 'inOutSine',
-        loop: true,
-        alternate: true,
-      })
-    );
-    return () => animations.forEach((a) => a.revert());
-  }, []);
 
   return (
     <div className="background" aria-hidden="true">
-      <div className="orbs" ref={orbsRef}>
+      <div className="orbs">
         <span className="orb orb-1" />
         <span className="orb orb-2" />
         <span className="orb orb-3" />
