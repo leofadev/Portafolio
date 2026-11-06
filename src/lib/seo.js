@@ -47,7 +47,8 @@ export function seoHead(data) {
   const json = JSON.stringify(structuredData(data)).replace(/</g, '\\u003c');
   return [
     `<link rel="canonical" href="${SITE_URL}" />`,
-    `<link rel="alternate" hreflang="es" href="${SITE_URL}" />`,
+    // Sin ?lang el sitio elige el idioma del navegador: esa URL es x-default y cada idioma tiene la suya
+    `<link rel="alternate" hreflang="es" href="${SITE_URL}?lang=es" />`,
     `<link rel="alternate" hreflang="en" href="${SITE_URL}?lang=en" />`,
     `<link rel="alternate" hreflang="x-default" href="${SITE_URL}" />`,
     '<meta property="og:locale:alternate" content="en_US" />',

@@ -45,7 +45,7 @@ Para no contar tus propias visitas, abre una vez [`/Portafolio/#toggle-goatcount
 Al compilar, un plugin de Vite (`vite.config.js` + `src/lib/seo.js`) inserta en `index.html`, a partir de `profile.js`:
 
 - Datos estructurados **JSON-LD** (`Person` y `WebSite`): nombre, cargo, empresa, estudios, habilidades y perfiles
-- URL canónica y versiones por idioma (`hreflang` es / en con `?lang=en`)
+- URL canónica y versiones por idioma (`hreflang`: `?lang=es`, `?lang=en` y la URL sin parámetro como `x-default`, que detecta el idioma)
 - Un resumen en `<noscript>` para buscadores que no ejecutan JavaScript
 
 El mapa del sitio está en [`public/sitemap.xml`](public/sitemap.xml).
