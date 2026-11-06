@@ -1,6 +1,6 @@
 import { animate, scrambleText, stagger } from 'animejs';
 import { FiArrowRight, FiMapPin } from 'react-icons/fi';
-import { profile } from '../data/profile';
+import { useI18n } from '../i18n/useI18n';
 import { useAnimeScope } from '../hooks/useAnimeScope';
 import { introElements } from '../lib/motion';
 import CvButton from './CvButton';
@@ -8,6 +8,8 @@ import SocialLinks from './SocialLinks';
 import TechCube from './TechCube';
 
 export default function Hero() {
+  const { t, content } = useI18n();
+  const { profile } = content;
   const root = useAnimeScope(() => {
     // Nombre: cada letra cae girando en 3D
     animate('.char', {
@@ -40,10 +42,10 @@ export default function Hero() {
   });
 
   return (
-    <section className="hero" aria-label="Inicio" ref={root}>
+    <section className="hero" aria-label={t.heroLabel} ref={root}>
       <div className="hero-content">
         <p className="eyebrow" data-anim>
-          <span className="pulse-dot" /> Hola, soy
+          <span className="pulse-dot" /> {t.greeting}
         </p>
         <h1 className="hero-title" aria-label={profile.name}>
           {profile.name.split(' ').map((word) => (
@@ -61,9 +63,9 @@ export default function Hero() {
         </p>
         <div className="hero-actions" data-anim>
           <a href="#proyectos" className="btn btn-primary">
-            Ver proyectos <FiArrowRight aria-hidden="true" />
+            {t.viewProjects} <FiArrowRight aria-hidden="true" />
           </a>
-          <a href="#contacto" className="btn btn-ghost">Contactarme</a>
+          <a href="#contacto" className="btn btn-ghost">{t.contactMe}</a>
           <CvButton />
         </div>
         <div data-anim>

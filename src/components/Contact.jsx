@@ -1,15 +1,15 @@
 import { useEffect, useRef } from 'react';
 import { animate, createAnimatable, stagger } from 'animejs';
 import { FiMail } from 'react-icons/fi';
-import { profile } from '../data/profile';
+import { useI18n } from '../i18n/useI18n';
 import { useAnimeScope } from '../hooks/useAnimeScope';
 import { introElements, isTouchDevice, prefersReducedMotion } from '../lib/motion';
 import CvButton from './CvButton';
 import SocialLinks from './SocialLinks';
 
-const TITLE = '¿Trabajamos juntos?';
-
 export default function Contact() {
+  const { t, content } = useI18n();
+  const { profile } = content;
   const buttonRef = useRef(null);
 
   const root = useAnimeScope(() => {
@@ -62,16 +62,16 @@ export default function Contact() {
 
   return (
     <section className="contact" aria-labelledby="contacto-title" ref={root}>
-      <p className="section-eyebrow" data-anim>05 · Contacto</p>
-      <h2 id="contacto-title" className="contact-title" aria-label={TITLE}>
-        {[...TITLE].map((char, i) => (
+      <p className="section-eyebrow" data-anim>{t.contact.eyebrow}</p>
+      <h2 id="contacto-title" className="contact-title" aria-label={t.contact.title}>
+        {[...t.contact.title].map((char, i) => (
           <span key={i} className="char" aria-hidden="true">
             {char === ' ' ? ' ' : char}
           </span>
         ))}
       </h2>
       <p className="contact-text" data-anim>
-        ¿Tienes un proyecto o una oportunidad laboral? Escríbeme y con gusto conversamos.
+        {t.contact.text}
       </p>
       <div className="contact-actions" data-anim>
         <a ref={buttonRef} href={`mailto:${profile.email}`} className="btn btn-primary btn-lg">

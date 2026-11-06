@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useI18n } from '../i18n/useI18n';
 import {
   SiAngular, SiBootstrap, SiExpo, SiExpress, SiGoogleappsscript, SiHibernate, SiIonic,
   SiMysql, SiNodedotjs, SiOpenjdk, SiReact, SiSpringboot, SiTypescript, SiVite,
@@ -23,13 +24,14 @@ const icons = {
 
 // Portada de la tarjeta: captura real si existe (`image`) o ilustración con las tecnologías (`cover`).
 export default function ProjectCover({ title, image, cover = [], children }) {
+  const { t } = useI18n();
   const [main, ...rest] = cover;
   const Watermark = icons[main];
 
   return (
     <div className={`project-cover ${image ? 'has-image' : ''}`}>
       {image ? (
-        <img src={`${import.meta.env.BASE_URL}${image}`} alt={`Captura de ${title}`} loading="lazy" />
+        <img src={`${import.meta.env.BASE_URL}${image}`} alt={`${t.projects.screenshot} ${title}`} loading="lazy" />
       ) : (
         <>
           {Watermark && <Watermark className="cover-watermark" aria-hidden="true" />}

@@ -26,9 +26,13 @@ Si el sistema tiene activado *reducir movimiento*, las animaciones se desactivan
 
 Landing de una sola pantalla: el menú muestra una sección a la vez (sin scroll entre secciones). Secciones: **Inicio**, **Sobre mí** (educación e idiomas), **Experiencia**, **Habilidades**, **Proyectos** y **Contacto**.
 
+## Idiomas
+
+El sitio está en **español e inglés**. El idioma inicial es el del navegador del visitante; el botón ES/EN lo cambia y la elección se recuerda. Para compartir directamente la versión en inglés: [`?lang=en`](https://leofadev.github.io/Portafolio/?lang=en).
+
 ## Editar el contenido
 
-Toda la información (perfil, experiencia, habilidades, proyectos y redes) está en [`src/data/profile.js`](src/data/profile.js). Para agregar un proyecto basta con añadir un objeto al arreglo `projects`; no hace falta tocar los componentes.
+Toda la información (perfil, experiencia, habilidades, proyectos y redes) está en [`src/data/profile.js`](src/data/profile.js). Los textos traducibles se escriben como `{ es: '…', en: '…' }`; los textos de la interfaz (botones, títulos) están en [`src/i18n/ui.js`](src/i18n/ui.js). Para agregar un proyecto basta con añadir un objeto al arreglo `projects`; no hace falta tocar los componentes.
 
 El CV descargable está en [`public/CV-Leonardo-Pinto.pdf`](public/CV-Leonardo-Pinto.pdf): para actualizarlo, reemplaza ese archivo manteniendo el nombre (o cambia `cv` en `profile.js`).
 
@@ -39,6 +43,7 @@ src/
 ├── components/   # Header, Hero, About, Experience, Skills, Projects, Contact...
 ├── data/         # profile.js: todo el contenido del sitio
 ├── hooks/        # useTheme, useActiveSection, useAnimeScope (anime.js + React) y useTilt
+├── i18n/         # Idiomas: textos de la interfaz, proveedor y useI18n
 ├── lib/          # motion.js: utilidades de animación compartidas
 ├── App.jsx
 └── main.jsx

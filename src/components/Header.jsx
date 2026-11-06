@@ -2,11 +2,12 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { animate, spring, stagger } from 'animejs';
 import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
-import { profile } from '../data/profile';
+import { useI18n } from '../i18n/useI18n';
 import { prefersReducedMotion } from '../lib/motion';
 
 export default function Header({ links, active, theme, onToggleTheme }) {
   const [open, setOpen] = useState(false);
+  const { t, content, lang, toggleLang } = useI18n();
   const listRef = useRef(null);
   const indicatorRef = useRef(null);
   const close = () => setOpen(false);
@@ -28,7 +29,7 @@ export default function Header({ links, active, theme, onToggleTheme }) {
     moveIndicator();
     window.addEventListener('resize', moveIndicator);
     return () => window.removeEventListener('resize', moveIndicator);
-  }, [active]);
+  }, [active, lang]);
 
   // Menú móvil: los enlaces entran en cascada
   useEffect(() => {
@@ -46,23 +47,23 @@ export default function Header({ links, active, theme, onToggleTheme }) {
 
   return (
     <header className="header">
-      <nav className="nav container" aria-label="Principal">
+      <nav className="nav container" aria-label={t.navLabel}>
         <a href="#inicio" className="logo" onClick={close}>
           <span className="logo-mark">{'<'}</span>
-          {profile.alias}
+          {content.profile.alias}
           <span className="logo-mark">{' />'}</span>
         </a>
 
         <ul id="menu" ref={listRef} className={`nav-links ${open ? 'is-open' : ''}`}>
           <span ref={indicatorRef} className="nav-indicator" aria-hidden="true" />
-          {links.map(({ id, label }) => (
+          {links.map((id) => (
             <li key={id}>
               <a
                 href={`#${id}`}
                 onClick={close}
                 aria-current={active === id ? 'page' : undefined}
               >
-                {label}
+                {t.nav[id]}
               </a>
             </li>
           ))}
@@ -71,9 +72,18 @@ export default function Header({ links, active, theme, onToggleTheme }) {
         <div className="nav-actions">
           <button
             type="button"
+            className="icon-btn lang-btn"
+            onClick={toggleLang}
+            aria-label={t.switchLang}
+            title={t.switchLang}
+          >
+            {lang === 'es' ? 'EN' : 'ES'}
+          </button>
+          <button
+            type="button"
             className="icon-btn"
             onClick={onToggleTheme}
-            aria-label={theme === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'}
+            aria-label={theme === 'dark' ? t.themeToLight : t.themeToDark}
           >
             {theme === 'dark' ? <FiSun /> : <FiMoon />}
           </button>
@@ -83,7 +93,7 @@ export default function Header({ links, active, theme, onToggleTheme }) {
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
             aria-controls="menu"
-            aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+            aria-label={open ? t.closeMenu : t.openMenu}
           >
             {open ? <FiX /> : <FiMenu />}
           </button>
@@ -94,9 +104,7 @@ export default function Header({ links, active, theme, onToggleTheme }) {
 }
 
 Header.propTypes = {
-  links: PropTypes.arrayOf(
-    PropTypes.shape({ id: PropTypes.string.isRequired, label: PropTypes.string.isRequired })
-  ).isRequired,
+  links: PropTypes.arrayOf(PropTypes.string).isRequired,
   active: PropTypes.string.isRequired,
   theme: PropTypes.oneOf(['light', 'dark']).isRequired,
   onToggleTheme: PropTypes.func.isRequired,

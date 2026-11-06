@@ -1,12 +1,14 @@
 import { animate, stagger } from 'animejs';
 import { FiGlobe } from 'react-icons/fi';
-import { profile, education, stats } from '../data/profile';
+import { useI18n } from '../i18n/useI18n';
 import { useAnimeScope } from '../hooks/useAnimeScope';
 import { introElements } from '../lib/motion';
 import Section from './Section';
 import TiltCard from './TiltCard';
 
 export default function About() {
+  const { t, content } = useI18n();
+  const { profile, education, stats } = content;
   const root = useAnimeScope(() => {
     introElements();
     // Contadores que suben desde 0
@@ -26,7 +28,7 @@ export default function About() {
   });
 
   return (
-    <Section id="sobre-mi" eyebrow="01 · Perfil" title="Sobre mí" ref={root}>
+    <Section id="sobre-mi" eyebrow={t.about.eyebrow} title={t.about.title} ref={root}>
       <div className="about">
         <div className="about-text">
           {profile.about.map((paragraph) => (
@@ -49,7 +51,7 @@ export default function About() {
         </div>
 
         <TiltCard data-anim>
-          <h3 className="card-title">Educación</h3>
+          <h3 className="card-title">{t.about.education}</h3>
           <ul className="timeline">
             {education.map(({ title, institution, period }) => (
               <li key={title} className="edu-item">

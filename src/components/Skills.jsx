@@ -1,19 +1,21 @@
 import { animate, stagger } from 'animejs';
 import { FiDatabase, FiLayout, FiServer, FiTool } from 'react-icons/fi';
-import { skills } from '../data/profile';
+import { useI18n } from '../i18n/useI18n';
 import { useAnimeScope } from '../hooks/useAnimeScope';
 import { introElements } from '../lib/motion';
 import Section from './Section';
 import TiltCard from './TiltCard';
 
 const icons = {
-  Backend: FiServer,
-  Frontend: FiLayout,
-  'Bases de datos': FiDatabase,
-  Herramientas: FiTool,
+  server: FiServer,
+  layout: FiLayout,
+  database: FiDatabase,
+  tool: FiTool,
 };
 
 export default function Skills() {
+  const { t, content } = useI18n();
+  const { skills } = content;
   const root = useAnimeScope(() => {
     introElements('.section-head');
     // Las tarjetas giran sobre su eje al entrar
@@ -35,10 +37,10 @@ export default function Skills() {
   });
 
   return (
-    <Section id="habilidades" eyebrow="03 · Stack" title="Habilidades" ref={root}>
+    <Section id="habilidades" eyebrow={t.skills.eyebrow} title={t.skills.title} ref={root}>
       <div className="grid grid-4">
-        {skills.map(({ group, items }) => {
-          const Icon = icons[group];
+        {skills.map(({ icon, group, items }) => {
+          const Icon = icons[icon];
           return (
             <TiltCard key={group} className="skill-card">
               <span className="card-icon" aria-hidden="true">

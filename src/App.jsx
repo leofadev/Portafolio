@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { animate } from 'animejs';
 import { useTheme } from './hooks/useTheme';
+import { useI18n } from './i18n/useI18n';
 import { useActiveSection } from './hooks/useActiveSection';
 import { prefersReducedMotion } from './lib/motion';
 import Background from './components/Background';
@@ -14,15 +15,16 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 
 const sections = [
-  { id: 'inicio', label: 'Inicio', Component: Hero },
-  { id: 'sobre-mi', label: 'Sobre mí', Component: About },
-  { id: 'experiencia', label: 'Experiencia', Component: Experience },
-  { id: 'habilidades', label: 'Habilidades', Component: Skills },
-  { id: 'proyectos', label: 'Proyectos', Component: Projects },
-  { id: 'contacto', label: 'Contacto', Component: Contact },
+  { id: 'inicio', Component: Hero },
+  { id: 'sobre-mi', Component: About },
+  { id: 'experiencia', Component: Experience },
+  { id: 'habilidades', Component: Skills },
+  { id: 'proyectos', Component: Projects },
+  { id: 'contacto', Component: Contact },
 ];
 
 const ids = sections.map((s) => s.id);
+const navLinks = ids.filter((id) => id !== 'inicio');
 
 // Evita que el enlace cambie el hash (y con ello la sección activa)
 function focusMain(event) {
@@ -32,6 +34,7 @@ function focusMain(event) {
 
 export default function App() {
   const { theme, toggleTheme } = useTheme();
+  const { t, lang } = useI18n();
   const target = useActiveSection(ids, 'inicio');
   const [shown, setShown] = useState(target);
   const panelRef = useRef(null);
@@ -70,23 +73,24 @@ export default function App() {
       ease: 'outExpo',
     });
     return () => enter.revert();
-  }, [shown]);
+  }, [shown, lang]);
 
   return (
     <div className="app">
       <Background pulseKey={shown} />
       <CursorGlow />
       <a href="#contenido" className="skip-link" onClick={focusMain}>
-        Saltar al contenido
+        {t.skipLink}
       </a>
       <Header
-        links={sections.filter((s) => s.id !== 'inicio')}
+        links={navLinks}
         active={target}
         theme={theme}
         onToggleTheme={toggleTheme}
       />
       <main id="contenido" className="main" tabIndex={-1}>
-        <div key={shown} ref={panelRef} className="panel container">
+        {/* key: reinicia la animación de entrada al cambiar de sección o de idioma */}
+        <div key={`${shown}-${lang}`} ref={panelRef} className="panel container">
           <Component />
         </div>
       </main>

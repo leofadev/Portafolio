@@ -1,11 +1,13 @@
 import { animate, createDrawable, stagger } from 'animejs';
-import { experience } from '../data/profile';
+import { useI18n } from '../i18n/useI18n';
 import { useAnimeScope } from '../hooks/useAnimeScope';
 import { introElements } from '../lib/motion';
 import Section from './Section';
 import TiltCard from './TiltCard';
 
 export default function Experience() {
+  const { t, content } = useI18n();
+  const { experience } = content;
   const root = useAnimeScope(() => {
     introElements('.section-head');
     // La línea de tiempo se dibuja y luego aparecen los nodos y las tarjetas
@@ -37,7 +39,7 @@ export default function Experience() {
   });
 
   return (
-    <Section id="experiencia" eyebrow="02 · Trayectoria" title="Experiencia" ref={root}>
+    <Section id="experiencia" eyebrow={t.experience.eyebrow} title={t.experience.title} ref={root}>
       <div className="experience">
         <svg className="rail" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true">
           <line className="rail-line" x1="1" y1="0" x2="1" y2="100" vectorEffect="non-scaling-stroke" />

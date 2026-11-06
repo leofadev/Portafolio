@@ -1,11 +1,13 @@
 import { animate, stagger } from 'animejs';
-import { projects } from '../data/profile';
+import { useI18n } from '../i18n/useI18n';
 import { useAnimeScope } from '../hooks/useAnimeScope';
 import { introElements } from '../lib/motion';
 import Section from './Section';
 import ProjectCard from './ProjectCard';
 
 export default function Projects() {
+  const { t, content } = useI18n();
+  const { projects } = content;
   const root = useAnimeScope(() => {
     introElements('.section-head');
     // Las tarjetas se voltean en 3D en diagonal (stagger en rejilla 3x2)
@@ -21,7 +23,7 @@ export default function Projects() {
   });
 
   return (
-    <Section id="proyectos" eyebrow="04 · Trabajo" title="Proyectos" ref={root}>
+    <Section id="proyectos" eyebrow={t.projects.eyebrow} title={t.projects.title} ref={root}>
       <div className="grid grid-3">
         {projects.map((project) => (
           <ProjectCard key={project.title} {...project} />

@@ -1,21 +1,23 @@
 import PropTypes from 'prop-types';
 import { FaGithub } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
+import { useI18n } from '../i18n/useI18n';
 import ProjectCover from './ProjectCover';
 import TiltCard from './TiltCard';
 
 export default function ProjectCard({ title, description, tags, repo, demo, image, cover }) {
+  const { t } = useI18n();
   return (
     <TiltCard as="article" className="project">
       <ProjectCover title={title} image={image} cover={cover}>
         <div className="project-top" data-tilt-flat>
           <div className="project-links">
             {demo && (
-              <a href={demo} target="_blank" rel="noreferrer" aria-label={`Demo de ${title}`} title="Demo">
+              <a href={demo} target="_blank" rel="noreferrer" aria-label={`${t.projects.demo}: ${title}`} title={t.projects.demo}>
                 <FiExternalLink />
               </a>
             )}
-            <a href={repo} target="_blank" rel="noreferrer" aria-label={`Código de ${title}`} title="Código">
+            <a href={repo} target="_blank" rel="noreferrer" aria-label={`${t.projects.code}: ${title}`} title={t.projects.code}>
               <FaGithub />
             </a>
           </div>
