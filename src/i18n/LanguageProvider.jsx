@@ -4,6 +4,7 @@ import * as data from '../data/profile';
 import { LanguageContext } from './context';
 import { LANGS, localize } from './localize';
 import { ui } from './ui';
+import { SITE_URL } from '../lib/seo';
 
 const STORAGE_KEY = 'lang';
 
@@ -31,6 +32,8 @@ export default function LanguageProvider({ children }) {
     document.documentElement.lang = lang;
     document.title = t.meta.title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', t.meta.description);
+    // Cada idioma tiene su propia URL canónica (la versión en inglés es ?lang=en)
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', lang === 'en' ? `${SITE_URL}?lang=en` : SITE_URL);
     try {
       localStorage.setItem(STORAGE_KEY, lang);
     } catch {

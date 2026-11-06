@@ -43,7 +43,7 @@ export const ui = {
       subject: 'Nuevo mensaje desde el portafolio',
     },
     meta: {
-      title: 'LeofaDev | Portafolio',
+      title: 'Leonardo Pinto · Desarrollador Full Stack (Laravel, PHP) | LeofaDev',
       description: 'Portafolio de Leonardo Pinto, desarrollador Full Stack especializado en Laravel, PHP y MySQL. Barranquilla, Colombia.',
     },
   },
@@ -90,7 +90,7 @@ export const ui = {
       subject: 'New message from the portfolio',
     },
     meta: {
-      title: 'LeofaDev | Portfolio',
+      title: 'Leonardo Pinto · Full Stack Developer (Laravel, PHP) | LeofaDev',
       description: 'Portfolio of Leonardo Pinto, Full Stack developer specialized in Laravel, PHP and MySQL. Barranquilla, Colombia.',
     },
   },

@@ -40,6 +40,16 @@ Las visitas se miden con [GoatCounter](https://www.goatcounter.com) (sin cookies
 
 Para no contar tus propias visitas, abre una vez [`/Portafolio/#toggle-goatcounter`](https://leofadev.github.io/Portafolio/#toggle-goatcounter) en tu navegador.
 
+## SEO
+
+Al compilar, un plugin de Vite (`vite.config.js` + `src/lib/seo.js`) inserta en `index.html`, a partir de `profile.js`:
+
+- Datos estructurados **JSON-LD** (`Person` y `WebSite`): nombre, cargo, empresa, estudios, habilidades y perfiles
+- URL canónica y versiones por idioma (`hreflang` es / en con `?lang=en`)
+- Un resumen en `<noscript>` para buscadores que no ejecutan JavaScript
+
+El mapa del sitio está en [`public/sitemap.xml`](public/sitemap.xml).
+
 ## Editar el contenido
 
 Toda la información (perfil, experiencia, habilidades, proyectos y redes) está en [`src/data/profile.js`](src/data/profile.js). Los textos traducibles se escriben como `{ es: '…', en: '…' }`; los textos de la interfaz (botones, títulos) están en [`src/i18n/ui.js`](src/i18n/ui.js). Para agregar un proyecto basta con añadir un objeto al arreglo `projects`; no hace falta tocar los componentes.

@@ -3,6 +3,7 @@
 
 export const profile = {
   name: 'Leonardo Pinto',
+  fullName: 'Leonardo Fabio Pinto Vega',
   alias: 'LeofaDev',
   role: { es: 'Desarrollador de Software Full Stack', en: 'Full Stack Software Developer' },
   headline: {
