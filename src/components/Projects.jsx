@@ -23,8 +23,8 @@ export default function Projects() {
   return (
     <Section id="proyectos" eyebrow="04 · Trabajo" title="Proyectos" ref={root}>
       <div className="grid grid-3">
-        {projects.map((project, i) => (
-          <ProjectCard key={project.title} index={i + 1} {...project} />
+        {projects.map((project) => (
+          <ProjectCard key={project.title} {...project} />
         ))}
       </div>
     </Section>

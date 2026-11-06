@@ -880,18 +880,100 @@ a {
   margin-bottom: 0;
 }
 
-.project-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Portada: ocupa todo el ancho superior de la tarjeta; índice y enlaces van encima */
+.project-cover {
+  position: relative;
+  height: 66px;
+  margin: -22px -22px 4px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(circle at 15% 120%, color-mix(in srgb, var(--accent-2) 35%, transparent), transparent 55%),
+    linear-gradient(135deg, color-mix(in srgb, var(--accent-1) 45%, var(--bg)), color-mix(in srgb, var(--accent-3) 25%, var(--bg)));
 }
 
-.project-index {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--accent-1);
+.project-cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--text) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--text) 7%, transparent) 1px, transparent 1px);
+  background-size: 18px 18px;
+  mask-image: linear-gradient(to bottom, #000, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+}
+
+.project-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.project-cover.has-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgb(0 0 0 / 0.45), transparent 55%);
+}
+
+.cover-watermark {
+  position: absolute;
+  right: -14px;
+  bottom: -30px;
+  font-size: 6rem;
+  color: var(--text);
+  opacity: 0.08;
+  transform: rotate(-14deg);
+  transition: transform 0.6s, opacity 0.6s;
+}
+
+.cover-icons {
+  position: absolute;
+  left: 22px;
+  top: 14px;
+  display: flex;
+  gap: 8px;
+}
+
+.cover-icons li {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid color-mix(in srgb, var(--text) 18%, transparent);
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--bg) 45%, transparent);
+  backdrop-filter: blur(6px);
+  color: var(--text);
+  font-size: 1.2rem;
+  transition: transform 0.4s, color 0.4s;
+}
+
+.tilt-wrap:hover .cover-watermark {
+  opacity: 0.14;
+  transform: rotate(-4deg) scale(1.08);
+}
+
+.tilt-wrap:hover .cover-icons li {
+  color: var(--accent-2);
+  transform: translateY(-4px);
+}
+
+.tilt-wrap:hover .cover-icons li:nth-child(2) {
+  transition-delay: 0.06s;
+}
+
+.tilt-wrap:hover .cover-icons li:nth-child(3) {
+  transition-delay: 0.12s;
+}
+
+.project-top {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 1;
 }
 
 .project-links {
@@ -904,9 +986,11 @@ a {
   place-items: center;
   width: 36px;
   height: 36px;
-  border: 1px solid var(--border);
+  border: 1px solid color-mix(in srgb, var(--text) 18%, transparent);
   border-radius: 10px;
-  color: var(--muted);
+  background: color-mix(in srgb, var(--bg) 55%, transparent);
+  backdrop-filter: blur(6px);
+  color: var(--text);
   font-size: 1.05rem;
   transition: color 0.3s, border-color 0.3s, transform 0.3s;
 }

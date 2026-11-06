@@ -72,11 +72,13 @@ export const skills = [
 const GITHUB = 'https://github.com/leofadev';
 const PAGES = 'https://leofadev.github.io';
 
+// Cada proyecto puede tener `image` (captura en /public) o `cover` (iconos para la portada ilustrada)
 export const projects = [
   {
     title: 'Pinto Music',
     description: 'App de música con inicio de sesión, catálogo de artistas, álbumes y canciones desde una API, favoritos y modo oscuro.',
     tags: ['Ionic', 'Angular', 'TypeScript', 'API REST'],
+    cover: ['ionic', 'angular', 'typescript'],
     repo: `${GITHUB}/pintoMusic`,
     demo: `${PAGES}/pintoMusic/`,
   },
@@ -84,12 +86,14 @@ export const projects = [
     title: 'Soccer Project',
     description: 'App móvil para gestionar una liga de fútbol: equipos, jugadores, partidos, tabla de posiciones y goleadores.',
     tags: ['React Native', 'Expo', 'TypeScript'],
+    cover: ['react', 'expo', 'typescript'],
     repo: `${GITHUB}/SoccerProject`,
   },
   {
     title: 'Rick and Morty Explorer',
     description: 'Listado paginado de personajes de Rick and Morty consumiendo la API pública oficial.',
     tags: ['React', 'Vite', 'Bootstrap', 'API REST'],
+    cover: ['react', 'vite', 'bootstrap'],
     repo: `${GITHUB}/API-RICK-AND-MORTY`,
     demo: `${PAGES}/API-RICK-AND-MORTY/`,
   },
@@ -97,6 +101,7 @@ export const projects = [
     title: 'Jurassic App',
     description: 'Catálogo de dinosaurios de Jurassic Park con datos servidos desde Google Sheets mediante Apps Script.',
     tags: ['React', 'Vite', 'Google Apps Script'],
+    cover: ['react', 'vite', 'appsscript'],
     repo: `${GITHUB}/JurassicApp`,
     demo: `${PAGES}/JurassicApp/`,
   },
@@ -104,12 +109,14 @@ export const projects = [
     title: 'API REST de libros',
     description: 'API CRUD para administrar libros con Express conectada a una base de datos MySQL.',
     tags: ['Node.js', 'Express', 'MySQL'],
+    cover: ['node', 'express', 'mysql'],
     repo: `${GITHUB}/api_rest`,
   },
   {
     title: 'API REST de actores',
     description: 'Servicio REST con Spring Boot y JPA para gestionar actores.',
     tags: ['Java', 'Spring Boot', 'JPA'],
+    cover: ['java', 'springboot', 'hibernate'],
     repo: `${GITHUB}/ApiRest`,
   },
 ];
